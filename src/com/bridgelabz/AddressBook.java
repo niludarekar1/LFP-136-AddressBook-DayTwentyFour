@@ -1,9 +1,6 @@
 package com.bridgelabz;
 
-import java.util.HashSet;
-import java.util.Scanner;
-import java.util.ArrayList;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class AddressBook {
@@ -113,6 +110,8 @@ public class AddressBook {
         }
         return flag == 1;
     }
+
+
     public boolean deleteContact(String name) {
         int flag = 0;
         for (Contacts contact : contactList) {
@@ -125,13 +124,30 @@ public class AddressBook {
         return flag == 1;
     }
 
-    // method created to check the Duplicate entries
+    //UC7- method created to check the Duplicate entries
     public void checkDuplicate() {
         Set<String> ContactSet = new HashSet<>();
         Set<Contacts> filterSet = contactList.stream().filter(n -> !ContactSet.add(n.getFirstName())).collect(Collectors.toSet());
 
         for (Contacts contact : filterSet) {
             System.out.println("The Duplicate Contact Entry is: " + contact.getFirstName() + " " + contact.getLastname());
+        }
+    }
+
+    // UC8- search a person by city name
+    public void getPersonNameByState(String State) {
+        List<Contacts> list  = contactList.stream().filter(p ->p.getCity().equals(State)).collect(Collectors.toList());
+        for(Contacts contact: list){
+            System.out.println("First Name: "+contact.getFirstName());
+            System.out.println("Last Name: "+contact.getLastname());
+        }
+    }
+    // UC8- search a person by name name
+    public void getPersonNameByCity(String cityName) {
+        List<Contacts> list  = contactList.stream().filter(p ->p.getCity().equals(cityName)).collect(Collectors.toList());
+        for(Contacts contact: list){
+            System.out.println("First Name: "+contact.getFirstName());
+            System.out.println("Last Name: "+contact.getLastname());
         }
     }
 }
