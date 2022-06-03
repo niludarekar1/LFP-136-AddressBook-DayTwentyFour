@@ -4,11 +4,8 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 public class AddressBook {
-
     public static Scanner sc = new Scanner(System.in);
-
     public ArrayList<Contacts> contactList = new ArrayList<>();
-
     public HashMap<String, ArrayList<Contacts>> personByState;
     public HashMap<String, ArrayList<Contacts>> personByCity;
 
@@ -129,26 +126,6 @@ public class AddressBook {
         return flag == 1;
     }
 
-    //Method to Delete the Existing Contact
-  /*  public void deleteContact() {
-        //Get First Name to Edit the Contact
-        System.out.println("Enter the First Name : ");
-        String firstName = sc.next();
-
-        //check if the Given User with First Name
-        boolean isAvailable = false;
-        for(Contacts contact : contactList) {
-            if (firstName.equalsIgnoreCase(contact.getFirstName())) {
-                isAvailable = true;
-                contactList.remove(contact);
-                System.out.println("Contact deleted");
-                break;
-            }
-        }
-        if(!isAvailable) {
-            System.out.println("Contact number is not available");
-        }
-    }*/
     public boolean deleteContact(String name) {
         int flag = 0;
         for (Contacts contact : contactList) {
